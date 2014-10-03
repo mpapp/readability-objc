@@ -23,7 +23,6 @@
 		3DDBC6AE151E349900D8CF54 /* NSString+JXRemoving.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DDBC6AD151E349900D8CF54 /* NSString+JXRemoving.m */; };
 		5F13FCEB19DED8A900A276B2 /* Readability.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F13FCEA19DED8A900A276B2 /* Readability.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5F13FCF519DED8A900A276B2 /* ReadabilityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F13FCF419DED8A900A276B2 /* ReadabilityTests.m */; };
-		5F13FCFC19DED8D300A276B2 /* JXReadabilityDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DC9BE7014F93ECC007062BC /* JXReadabilityDocument.h */; };
 		5F13FCFD19DED8D300A276B2 /* JXReadabilityDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DC9BE7114F93ECC007062BC /* JXReadabilityDocument.m */; };
 		5F13FCFE19DED8D300A276B2 /* JXWebResourceLoadingBarrier.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DAB86C7157CC04500392401 /* JXWebResourceLoadingBarrier.h */; };
 		5F13FCFF19DED8D300A276B2 /* JXWebResourceLoadingBarrier.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DAB86C8157CC04500392401 /* JXWebResourceLoadingBarrier.m */; };
@@ -39,8 +38,11 @@
 		5F13FD0919DED8E900A276B2 /* htmls.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DDBC67E151DCB9600D8CF54 /* htmls.m */; };
 		5F13FD0A19DED8F300A276B2 /* NSURL+ValidityChecking.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DC9BE4F14F7D3D4007062BC /* NSURL+ValidityChecking.h */; };
 		5F13FD0B19DED8F300A276B2 /* NSURL+ValidityChecking.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DC9BE5014F7D3D4007062BC /* NSURL+ValidityChecking.m */; };
-		5F13FD0C19DED8F300A276B2 /* KBWebArchiver.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DC9BE5114F7D3D4007062BC /* KBWebArchiver.h */; };
+		5F13FD0C19DED8F300A276B2 /* KBWebArchiver.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DC9BE5114F7D3D4007062BC /* KBWebArchiver.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5F13FD0D19DED8F300A276B2 /* KBWebArchiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DC9BE5214F7D3D4007062BC /* KBWebArchiver.m */; };
+		5F13FD1A19DEDDA000A276B2 /* JXReadabilityTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F13FD1819DEDD9D00A276B2 /* JXReadabilityTransformer.m */; };
+		5F13FD1C19DF277700A276B2 /* JXReadabilityDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DC9BE7014F93ECC007062BC /* JXReadabilityDocument.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5F13FD1D19DF277700A276B2 /* JXReadabilityTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F13FD1719DEDD9D00A276B2 /* JXReadabilityTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -89,6 +91,8 @@
 		5F13FCF019DED8A900A276B2 /* ReadabilityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReadabilityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F13FCF319DED8A900A276B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F13FCF419DED8A900A276B2 /* ReadabilityTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReadabilityTests.m; sourceTree = "<group>"; };
+		5F13FD1719DEDD9D00A276B2 /* JXReadabilityTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JXReadabilityTransformer.h; path = readability/JXReadabilityTransformer.h; sourceTree = "<group>"; };
+		5F13FD1819DEDD9D00A276B2 /* JXReadabilityTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JXReadabilityTransformer.m; path = readability/JXReadabilityTransformer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +211,8 @@
 				3DC9BE7114F93ECC007062BC /* JXReadabilityDocument.m */,
 				3DAB86C7157CC04500392401 /* JXWebResourceLoadingBarrier.h */,
 				3DAB86C8157CC04500392401 /* JXWebResourceLoadingBarrier.m */,
+				5F13FD1719DEDD9D00A276B2 /* JXReadabilityTransformer.h */,
+				5F13FD1819DEDD9D00A276B2 /* JXReadabilityTransformer.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -280,8 +286,9 @@
 				5F13FCFE19DED8D300A276B2 /* JXWebResourceLoadingBarrier.h in Headers */,
 				5F13FD0619DED8DC00A276B2 /* NSString+ReplaceExtensions.h in Headers */,
 				5F13FD0419DED8DC00A276B2 /* NSString+JXRemoving.h in Headers */,
-				5F13FCFC19DED8D300A276B2 /* JXReadabilityDocument.h in Headers */,
+				5F13FD1C19DF277700A276B2 /* JXReadabilityDocument.h in Headers */,
 				5F13FCEB19DED8A900A276B2 /* Readability.h in Headers */,
+				5F13FD1D19DF277700A276B2 /* JXReadabilityTransformer.h in Headers */,
 				5F13FD0819DED8E900A276B2 /* htmls.h in Headers */,
 				5F13FD0019DED8DC00A276B2 /* NSXMLNode+HTMLUtilities.h in Headers */,
 				5F13FD0A19DED8F300A276B2 /* NSURL+ValidityChecking.h in Headers */,
@@ -423,6 +430,7 @@
 				5F13FD0319DED8DC00A276B2 /* NSString+Counting.m in Sources */,
 				5F13FD0919DED8E900A276B2 /* htmls.m in Sources */,
 				5F13FD0519DED8DC00A276B2 /* NSString+JXRemoving.m in Sources */,
+				5F13FD1A19DEDDA000A276B2 /* JXReadabilityTransformer.m in Sources */,
 				5F13FD0B19DED8F300A276B2 /* NSURL+ValidityChecking.m in Sources */,
 				5F13FCFD19DED8D300A276B2 /* JXReadabilityDocument.m in Sources */,
 				5F13FD0D19DED8F300A276B2 /* KBWebArchiver.m in Sources */,

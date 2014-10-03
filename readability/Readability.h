@@ -16,4 +16,5 @@ FOUNDATION_EXPORT const unsigned char ReadabilityVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <Readability/PublicHeader.h>
 
-
+#import "JXReadabilityDocument.h"
+#import "JXReadabilityTransformer.h"
