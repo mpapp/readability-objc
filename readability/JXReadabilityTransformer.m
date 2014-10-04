@@ -30,8 +30,10 @@
         webarchive = archiver.webArchive;
         NSData *data = webarchive.data;
         
-        if (error) {
-            *error = [archiver error];
+        if (!data) {
+            if (error)
+                *error = [archiver error];
+            
             return nil;
         }
         
