@@ -9,14 +9,15 @@
 #import <Foundation/Foundation.h>
 #import <WebKit/WebKit.h>
 
+
 @interface JXReadabilityTransformer : NSObject
 
 - (WebArchive *)readableWebArchiveForContentsOfURL:(NSURL *)URL
-                                 preprocessHandler:(NSData *(^)(NSData *data))preprocessHandler
+                                 preprocessHandler:(NSData *(^)(NSData *data, NSError **preprocessError))preprocessHandler
                                              error:(NSError **)error;
 
 - (WebArchive *)readableWebArchiveForWebArchive:(WebArchive *)webarchive
-                              preprocessHandler:(NSData *(^)(NSData *data))preprocessHandler
+                              preprocessHandler:(NSData *(^)(NSData *data, NSError **preprocessError))preprocessHandler
                                           error:(NSError **)error;
 
 @end

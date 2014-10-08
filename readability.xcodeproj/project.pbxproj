@@ -38,7 +38,7 @@
 		5F13FD0919DED8E900A276B2 /* htmls.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DDBC67E151DCB9600D8CF54 /* htmls.m */; };
 		5F13FD0A19DED8F300A276B2 /* NSURL+ValidityChecking.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DC9BE4F14F7D3D4007062BC /* NSURL+ValidityChecking.h */; };
 		5F13FD0B19DED8F300A276B2 /* NSURL+ValidityChecking.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DC9BE5014F7D3D4007062BC /* NSURL+ValidityChecking.m */; };
-		5F13FD0C19DED8F300A276B2 /* KBWebArchiver.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DC9BE5114F7D3D4007062BC /* KBWebArchiver.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5F13FD0C19DED8F300A276B2 /* KBWebArchiver.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DC9BE5114F7D3D4007062BC /* KBWebArchiver.h */; };
 		5F13FD0D19DED8F300A276B2 /* KBWebArchiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DC9BE5214F7D3D4007062BC /* KBWebArchiver.m */; };
 		5F13FD1A19DEDDA000A276B2 /* JXReadabilityTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F13FD1819DEDD9D00A276B2 /* JXReadabilityTransformer.m */; };
 		5F13FD1C19DF277700A276B2 /* JXReadabilityDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DC9BE7014F93ECC007062BC /* JXReadabilityDocument.h */; settings = {ATTRIBUTES = (Public, ); }; };

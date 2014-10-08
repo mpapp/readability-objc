@@ -348,7 +348,7 @@ NSSet * stringSetForListStringDelimitedBy(NSString *listString, NSString *delimi
 	NSXMLDocument *output = [[NSXMLDocument alloc] initWithXMLString:@"<html><head><title /></head><body><div id='readibility-root' /></body></html>"
 																options:NSXMLDocumentTidyHTML 
 																  error:NULL];
-	[output setDocumentContentKind:NSXMLDocumentXHTMLKind];
+	[output setDocumentContentKind:JXReadabilityNSXMLDocumentKind];
 	NSXMLElement *htmlDiv = [output nodesForXPath:@"/html/body/div" 
 											  error:NULL][0];
 #if 0
@@ -602,7 +602,7 @@ NSUInteger sumCFArrayOfNSUInteger(CFArrayRef array) {
 			CFMutableDictionaryRef counts = CFDictionaryCreateMutable(kCFAllocatorDefault, 0, &kCFTypeDictionaryKeyCallBacks, NULL); // keys: NSString, values:raw CFIndex
 			
 			for (NSString *kind in tagKinds) {
-				kindCount = (CFIndex)[[node nodesForXPath:[NSString stringWithFormat:tagNameXPath, kind] 
+				kindCount = (CFIndex)[[node nodesForXPath:[NSString stringWithFormat:tagNameXPathFormat, kind, [kind uppercaseString]] //tagNameXPath, kind]
 													error:NULL] count];
 				CFDictionaryAddValue(counts, (__bridge const void *)(kind), (void *)kindCount);
 			}

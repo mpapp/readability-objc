@@ -14,7 +14,7 @@
 @implementation JXReadabilityTransformer
 
 - (WebArchive *)readableWebArchiveForContentsOfURL:(NSURL *)URL
-                                 preprocessHandler:(NSData *(^)(NSData *data))preprocessHandler
+                                 preprocessHandler:(NSData *(^)(NSData *data, NSError **preprocessingError))preprocessHandler
                                              error:(NSError **)error {
     WebArchive *webarchive = nil;
     if ([URL.lastPathComponent hasSuffix:@".webarchive"]) {
@@ -46,7 +46,7 @@
 }
 
 - (WebArchive *)readableWebArchiveForWebArchive:(WebArchive *)webarchive
-                              preprocessHandler:(NSData *(^)(NSData *data))preprocessHandler
+                              preprocessHandler:(NSData *(^)(NSData *data, NSError **preprocessingError))preprocessHandler
                                           error:(NSError **)error {
     WebResource *resource = webarchive.mainResource;
     NSString *textEncodingName = resource.textEncodingName;
@@ -66,13 +66,28 @@
     }
     
     NSXMLDocument *doc = nil;
-    NSXMLDocumentContentKind contentKind = NSXMLDocumentXHTMLKind;
+    NSXMLDocumentContentKind contentKind = JXReadabilityNSXMLDocumentKind;
     NSUInteger xmlOutputOptions = (contentKind
                                    //| NSXMLNodePrettyPrint
                                    | NSXMLNodePreserveWhitespace
-                                   | NSXMLNodeCompactEmptyElement);
-    if (preprocessHandler) {
-        doc = [[NSXMLDocument alloc] initWithData:preprocessHandler(resource.data)
+                                   | NSXMLNodeCompactEmptyElement
+                                   | NSXMLNodeLoadExternalEntitiesNever);
+    if (preprocessHandler)
+    {
+        NSError *localError = nil;
+        NSData *preprocessedData = preprocessHandler(resource.data, &localError);
+        if (!preprocessedData)
+        {
+            if (error)
+            {
+                NSString *description = @"Failed to preprocess web archive data";
+                NSDictionary *info = localError ? @{NSLocalizedDescriptionKey: description, NSUnderlyingErrorKey: localError} : @{NSLocalizedDescriptionKey: description};
+                *error = [NSError errorWithDomain:@"JXReadabilityErrorDomain" code:1 userInfo:info];
+            }
+            return nil;
+        }
+        
+        doc = [[NSXMLDocument alloc] initWithData:preprocessedData
                                           options:xmlOutputOptions error:error];
         
         if (!doc)
@@ -98,7 +113,15 @@
     }
     
     // Create a new webarchive with the processed markup as main content and the resources from the source webarchive
+    summaryDoc.DTD = nil;
+    summaryDoc.standalone = YES;
+    [summaryDoc.rootElement setNamespaces:nil];
+    
     NSData *docData = [summaryDoc XMLDataWithOptions:xmlOutputOptions];
+
+    NSString *docString = [[NSString alloc] initWithData:docData encoding:NSUTF8StringEncoding];
+    NSLog(@"%@", [docString substringToIndex:500]);
+    
     WebResource *mainResource = [[WebResource alloc] initWithData:docData
                                                               URL:resource.URL
                                                          MIMEType:resource.MIMEType

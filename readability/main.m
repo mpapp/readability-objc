@@ -146,9 +146,9 @@ int main(int argc, const char * argv[])
 #endif
 
 		
-		NSXMLDocumentContentKind contentKind = NSXMLDocumentXHTMLKind;
+		NSXMLDocumentContentKind contentKind = JXReadabilityNSXMLDocumentKind;
 		NSUInteger xmlOutputOptions = (contentKind 
-									   //| NSXMLNodePrettyPrint 
+									   //| NSXMLNodePrettyPrint
 									   | NSXMLNodePreserveWhitespace 
 									   | NSXMLNodeCompactEmptyElement
 									   );
