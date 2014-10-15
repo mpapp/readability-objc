@@ -542,7 +542,7 @@ NSUInteger sumCFArrayOfNSUInteger(CFArrayRef array) {
 - (NSXMLDocument *)sanitizeArticle:(NSXMLDocument *)node forCandidates:(NSDictionary *)candidates
 {
 #ifndef DEBUG_SANITIZE
-#	define DEBUG_SANITIZE	0
+#	define DEBUG_SANITIZE	1
 #endif
 	
 	NSNumber *minTextLengthNum = (self.options)[@"minTextLength"];
@@ -578,7 +578,7 @@ NSUInteger sumCFArrayOfNSUInteger(CFArrayRef array) {
 	// Conditionally clean <table>s, <ul>s, and <div>s
 	for (NSXMLElement *el in [node tagsWithNames:@"table", @"ul", @"div", nil]) {
 		hashableEl = [HashableElement elementForNode:el];
-		
+        
 		if (CFDictionaryContainsValue(allowed, (__bridge const void *)(hashableEl)))  continue;
 		
 		weight = [self classWeight:el];
@@ -665,6 +665,7 @@ NSUInteger sumCFArrayOfNSUInteger(CFArrayRef array) {
 #endif
 					toRemove = YES;
 				}
+                /*
 				else if ((contentLength < minLen) 
 						 && ((countsFor(@"img") == 0) 
 							 || (countsFor(@"img") > 2))) {
@@ -672,7 +673,7 @@ NSUInteger sumCFArrayOfNSUInteger(CFArrayRef array) {
 					reason = [NSString stringWithFormat:@"too short content length %lu without a single image", (unsigned long)contentLength];
 #endif
 					toRemove = YES;
-				}
+				}*/
 				else if (weight < 25 && linkDensity > 0.2) {
 #if DEBUG_SANITIZE
 					reason = [NSString stringWithFormat:@"too many links %.3f for its weight %.0f", linkDensity, weight];
