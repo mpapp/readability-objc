@@ -72,14 +72,11 @@
                                    | NSXMLNodePreserveWhitespace
                                    | NSXMLNodeCompactEmptyElement
                                    | NSXMLNodeLoadExternalEntitiesNever);
-    if (preprocessHandler)
-    {
+    if (preprocessHandler) {
         NSError *localError = nil;
         NSData *preprocessedData = preprocessHandler(resource.data, &localError);
-        if (!preprocessedData)
-        {
-            if (error)
-            {
+        if (!preprocessedData) {
+            if (error) {
                 NSString *description = @"Failed to preprocess web archive data";
                 NSDictionary *info = localError ? @{NSLocalizedDescriptionKey: description, NSUnderlyingErrorKey: localError} : @{NSLocalizedDescriptionKey: description};
                 *error = [NSError errorWithDomain:@"JXReadabilityErrorDomain" code:1 userInfo:info];
@@ -87,8 +84,7 @@
             return nil;
         }
         
-        doc = [[NSXMLDocument alloc] initWithData:preprocessedData
-                                          options:xmlOutputOptions error:error];
+        doc = [[NSXMLDocument alloc] initWithData:preprocessedData options:xmlOutputOptions error:error];
         
         if (!doc)
             return nil;
@@ -120,7 +116,7 @@
     NSData *docData = [summaryDoc XMLDataWithOptions:xmlOutputOptions];
 
     NSString *docString = [[NSString alloc] initWithData:docData encoding:NSUTF8StringEncoding];
-    NSLog(@"%@", [docString substringToIndex:500]);
+    NSLog(@"%@", [docString substringToIndex:(NSUInteger)MIN((NSUInteger)500, (NSUInteger)(docString.length - 1))]);
     
     WebResource *mainResource = [[WebResource alloc] initWithData:docData
                                                               URL:resource.URL
