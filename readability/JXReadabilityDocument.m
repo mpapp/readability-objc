@@ -541,7 +541,7 @@ NSSet * stringSetForListStringDelimitedBy(NSString *listString, NSString *delimi
 		candidate = candidates[hashableElem];
 		ld = [self getLinkDensity:elem];
 		score = [candidate[@"contentScore"] floatValue];
-		[self debug:[NSString stringWithFormat:@"Candid: %6.3f %s link density %.3f -> %6.3f", score, [elem readabilityDescription], ld, score*(1-ld)]];
+		[self debug:[NSString stringWithFormat:@"Candid: %6.3f %@ link density %.3f -> %6.3f", score, [elem readabilityDescription], ld, score*(1-ld)]];
 		score *= (1 - ld);
 		candidate[@"contentScore"] = @(score);
 	}
@@ -617,7 +617,7 @@ NSUInteger sumCFArrayOfNSUInteger(CFArrayRef array) {
 		tag = el.name;
 		
 		if ((weight + contentScore) < 0.0) {
-			[self debug:[NSString stringWithFormat:@"Cleaned %@ with score %6.3f and weight %-3s", [el readabilityDescription], contentScore, weight]];
+			[self debug:[NSString stringWithFormat:@"Cleaned %@ with score %6.3f and weight %-3f", [el readabilityDescription], contentScore, weight]];
 			[el detach];
 		}
 		else if ([[el stringValue] countOccurancesOfString:@","] < 10) {
