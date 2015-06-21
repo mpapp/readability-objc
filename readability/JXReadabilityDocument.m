@@ -132,7 +132,7 @@ NSSet * stringSetForListStringDelimitedBy(NSString *listString, NSString *delimi
 - (void)debug:(id)a
 {
 	//if ([(NSNumber *)(self.options)[@"debug"] boolValue]) {
-		NSLog(@"[READABILITAA] %@", a);
+		NSLog(@"[READABILITY] %@", a);
 	//}
 }
 
