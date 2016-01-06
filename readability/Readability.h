@@ -18,3 +18,4 @@ FOUNDATION_EXPORT const unsigned char ReadabilityVersionString[];
 
 #import "JXReadabilityDocument.h"
 #import "JXReadabilityTransformer.h"
+#import "KBWebArchiver.h"
